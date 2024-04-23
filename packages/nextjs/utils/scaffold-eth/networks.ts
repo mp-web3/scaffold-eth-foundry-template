@@ -31,6 +31,7 @@ export const RPC_CHAIN_NAMES: Record<number, string> = {
   [chains.base.id]: "base-mainnet",
   [chains.baseGoerli.id]: "base-goerli",
   [chains.baseSepolia.id]: "base-sepolia",
+  [chains.lineaSepolia.id]: "linea-sepolia",
 };
 
 export const getAlchemyHttpUrl = (chainId: number) => {
@@ -39,6 +40,11 @@ export const getAlchemyHttpUrl = (chainId: number) => {
     : undefined;
 };
 
+export const getInfuraHttpUrl = (chainId: number) => {
+  return RPC_CHAIN_NAMES[chainId]
+    ? `https://${RPC_CHAIN_NAMES[chainId]}.infura.io/v3/${scaffoldConfig.infuraApiKey}`
+    : undefined;
+};
 export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   [chains.hardhat.id]: {
     color: "#b8af0c",
